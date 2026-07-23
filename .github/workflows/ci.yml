@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: cargo fmt
+        run: nix develop --command cargo fmt --all -- --check
+
+      - name: cargo clippy
+        run: nix develop --command cargo clippy --all-targets -- -D warnings
+
+      - name: cargo test
+        run: nix develop --command cargo test
+
+      - name: cargo audit
+        run: nix develop --command cargo audit
+
+      - name: cargo deny check
+        run: nix develop --command cargo deny check
+
+      - name: nix build
+        run: nix build
