@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["wolpacket"]
+members = ["wolpacket-core", "wolpacket"]
 
 [workspace.package]
 edition = "2024"
@@ -8,3 +8,9 @@ license = "MIT"
 repository = "https://github.com/sean-rice/wolpacket"
 rust-version = "1.97.1"
 version = "0.1.0"
+
+[workspace.dependencies]
+ipnet = "2"
+macaddr = "1.0.1"
+thiserror = "2"
+tracing = "0.1"

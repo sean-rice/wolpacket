@@ -1,6 +1,6 @@
 [package]
-name = "wolpacket"
-description = "Wake-on-LAN TUI"
+name = "wolpacket-core"
+description = "Construct and send Wake-on-LAN magic packets"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -8,11 +8,6 @@ repository.workspace = true
 rust-version.workspace = true
 
 [dependencies]
-pico-args = "0.5"
-crossterm = "0.28"
-ipnet.workspace = true
 macaddr.workspace = true
-ratatui = "0.29"
 thiserror.workspace = true
 tracing.workspace = true
-wolpacket-core = { path = "../wolpacket-core" }
